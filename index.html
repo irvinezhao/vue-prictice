@@ -13,6 +13,11 @@
      <input v-model="number">
      <p>数字:{{ number }}</p>
  </div>
+ <div id="app2">
+    <card></card>
+    <card></card>
+    <card></card>
+ </div>
   <script>
       let vm = new Vue({
           el:"#app",
@@ -27,6 +32,20 @@
              number:"",
          }
      });
+
+     
+     Vue.component('card',{
+        template:`<div>
+            <img src="logo.png" alt="">
+            <h2>web前端教程</h2>
+            <p>这里是描述，很长的描述</p>
+            <button>我是按钮</button>
+        </div>`
+    });
+
+    new Vue({
+       el:"#app2"
+    });
   </script>
   </body>
 </html>
