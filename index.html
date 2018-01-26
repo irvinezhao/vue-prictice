@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+     <title> 简易安装 Vue.js</title>
+     <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+    公众号：{{ name }}
+  </div>
+  <div id="app1">
+     <input v-model="number">
+     <p>数字:{{ number }}</p>
+ </div>
+  <script>
+      let vm = new Vue({
+          el:"#app",
+          data:{
+             name:"web前端教程",
+          }
+      });
+
+      let vm1 = new Vue({
+         el:"#app1",
+         data:{
+             number:"",
+         }
+     });
+  </script>
+  </body>
+</html>
