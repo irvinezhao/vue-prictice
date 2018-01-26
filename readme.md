@@ -31,3 +31,5 @@ MVVM 可以拆分成：View --- ViewModel --- Model 三部分
 
 
   Vue 把整个生命周期划分为创建、挂载、更新、销毁等阶段
+
+![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
