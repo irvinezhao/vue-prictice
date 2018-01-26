@@ -1,109 +1,144 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-     <meta charset="UTF-8">
-     <title> 简易安装 Vue.js</title>
-     <script src="vue.js"></script>
-  </head>
-  <body>
-    <div id="app">
-    公众号：{{ name }}
-  </div>
-  <div id="app1">
-     <input v-model="number">
-     <p>数字:{{ number }}</p>
- </div>
- <div id="app2">
-    <card></card>
-    <card></card>
-    <card></card>
- </div>
+	<meta charset="UTF-8">
+	<title> 简易安装 Vue.js</title>
+	<script src="vue.js"></script>
+</head>
 
- <div id="app3">
-   数字1：{{ num1 | toInt}}<br>
-    数字2：{{ num2 | toInt}}<br>
-    数字3：{{ num3 | toInt}}<br>
-    总和：{{ sum | toInt}}
- </div>
+<body>
+	<div id="app1">
+		Vue：{{ name }}
+	</div>
+	<div id="app2">
+		<input v-model="number">
+		<p>数字:{{ number }}</p>
+	</div>
+	<div id="app3">
+		<card></card>
+		<card></card>
+		<card></card>
+	</div>
+	
+	<div id="app4">
+		数字1：{{ num1 | toInt}}
+		<br> 数字2：{{ num2 | toInt}}
+		<br> 数字3：{{ num3 | toInt}}
+		<br> 总和：{{ sum | toInt}}
+	</div>
+	
+	<div id="app5">
+		{{ a }}
+		<button v-on:click="plus">加1</button>
+	</div>
+	
+	<div id="app" ref="app">{{name}}</div>
+	<script>
+		// 1
+		new Vue({
+			el: "#app1",
+			data: {
+				name: "web前端教程",
+			}
+		});
+		// 2
+		new Vue({
+			el: "#app2",
+			data: {
+				number: "",
+			}
+		});
+		// 3
+		Vue.component('card', {
+			template: `<div>
+				<h2>web前端</h2>
+				<p>这里是描述，很长的描述</p>
+				<button>我是按钮</button>
+			</div>`
+		});
+		new Vue({
+			el: "#app3"
+		});
+		// 4
+		new Vue({
+			//挂载元素
+			el: '#app4',
+			
+			//实例vm的数据
+			data: {
+				num1: 33.141,
+				num2: 46.212,
+				num3: 78.541
+			},
+			//过滤器
+			filters: {
+				toInt(value) {
+					return parseInt(value);
+				}
+			},
+			//计算属性
+			computed: {
+				sum() {
+					return this.num1 + this.num2 + this.num3
+				}
+			}
+		});
+		
+		// 5
+		new Vue({
+			//挂载元素
+			el: '#app5',
+			//实例vm的数据
+			data: {
+				a: 0
+			},
+			//方法
+			methods: {
+				plus() {
+					return this.a++;
+				}
+			},
+			//观察
+			watch: {
+				a() { // 以参数命名func?
+					console.log(`有变化了，最新值：`);
+					console.log(this.a);
+				}
+			}
+		});
+		
+		// 6
+		new Vue({
+			el: "#app",
+			data: {
+				name: " im name "
+			},
+			beforeCreate() {
+				console.log('即将创建');
+				console.log(this.$data);
+				console.log(this.$el);
+			},
+			created() {
+				console.log('创建完毕');
+				console.log(this.$data);
+				console.log(this.$el);
+			},
+			beforeMount() {
+				console.log('即将挂载');
+				console.log(this.$el);
+			},
+			mounted(){
+				console.log('挂载完毕');
+				console.log(this.$el);
+			},
+			beforeUpdate(){
+				console.log('=即将更新渲染=');
+				let name = this.$refs.app.innerHTML;
+				console.log('name:'+name);
+			}
+		});
+	</script>
+</body>
 
- <div id="app5">
-    {{ a }}
-    <button v-on:click="plus">加1</button>
-  </div>
-  <script>
-  // 1
-      new Vue({
-          el:"#app",
-          data:{
-             name:"web前端教程",
-          }
-      });
-// 2
-      new Vue({
-         el:"#app1",
-         data:{
-             number:"",
-         }
-     });
-// 3
-     Vue.component('card',{
-        template:`<div>
-            <img src="logo.png" alt="">
-            <h2>web前端教程</h2>
-            <p>这里是描述，很长的描述</p>
-            <button>我是按钮</button>
-        </div>`
-    });
-    new Vue({
-       el:"#app2"
-    });
-    // 4
-    new Vue({
-      //挂载元素
-      el:'#app3',
-
-        //实例vm的数据
-      data:{
-             num1:33.141,
-             num2:46.212,
-             num3:78.541
-        },
-        //过滤器
-      filters:{
-          toInt(value){
-             return parseInt(value);
-          }
-        },
-        //计算属性
-      computed:{
-            sum(){
-              return this.num1+this.num2+this.num3
-            }
-        }
-      });
-
-      // 5
-      new Vue({
-          //挂载元素
-        el:'#app5',
-          //实例vm的数据
-        data:{
-               a:0
-          },
-          //方法
-        methods:{
-              plus(){
-                  return this.a++;
-              }
-          },
-          //观察
-        watch:{
-              a(){ // 以参数命名func?
-                console.log(`有变化了，最新值：`);
-                console.log(this.a);
-              }
-          }
-       });
-  </script>
-  </body>
 </html>
