@@ -35,6 +35,8 @@
 	
 	<div id="app" ref="app">{{name}}</div>
 	<script>
+		Vue.config.debug = true,
+		Vue.config.devtools = true,
 		// 1
 		new Vue({
 			el: "#app1",
