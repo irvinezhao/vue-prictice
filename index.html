@@ -59,6 +59,10 @@
 	<div id="app12">
 		<a :href="'http://'+host">hello官网</a>
 	</div>
+
+	<div id="app13">
+		<button v-on:click="say('Tom')">点击</button>
+	</div>
 	<script>
 		Vue.config.debug = true,
 			Vue.config.devtools = true,
@@ -212,6 +216,15 @@
 			el: "#app12",
 			data: {
 				host: 'hello.com'
+			}
+		});
+
+		new Vue({
+			el: "#app13",
+			methods: {
+				say(name) {
+					console.log('hello'+name);
+				}
 			}
 		});
 	</script>
