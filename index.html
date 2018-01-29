@@ -20,35 +20,55 @@
 		<card></card>
 		<card></card>
 	</div>
-	
+
 	<div id="app4">
 		数字1：{{ num1 | toInt}}
 		<br> 数字2：{{ num2 | toInt}}
 		<br> 数字3：{{ num3 | toInt}}
 		<br> 总和：{{ sum | toInt}}
 	</div>
-	
+
 	<div id="app5">
 		{{ a }}
 		<button v-on:click="plus">加1</button>
 	</div>
-	
+
 	<div id="app" ref="app">{{name}}</div>
 	<div id="app7" v-html="name7"></div>
 	<div id="app8">
 		<!--在href前用v-bind：修饰-->
 		<a v-bind:href="link">hello官网</a>
-	  </div>
+		<!--缩写-->
+		<a :href="link">hello官网</a>
+	</div>
+
+	<div id="app9">
+		<!--我们用缩写的语法-->
+		<button :disabled="dis_true">
+			我是true
+		</button>
+		<button :disabled="dis_false">
+			我是false
+		</button>
+	</div>
+
+	<div id="app10">{{ num+3 }}</div>
+
+	<div id="app11">{{ ok ? 'yes':'no' }}</div>
+
+	<div id="app12">
+		<a :href="'http://'+host">hello官网</a>
+	</div>
 	<script>
 		Vue.config.debug = true,
-		Vue.config.devtools = true,
-		// 1
-		new Vue({
-			el: "#app1",
-			data: {
-				name: "web前端教程",
-			}
-		});
+			Vue.config.devtools = true,
+			// 1
+			new Vue({
+				el: "#app1",
+				data: {
+					name: "web前端教程",
+				}
+			});
 		// 2
 		new Vue({
 			el: "#app2",
@@ -71,7 +91,7 @@
 		new Vue({
 			//挂载元素
 			el: '#app4',
-			
+
 			//实例vm的数据
 			data: {
 				num1: 33.141,
@@ -91,7 +111,7 @@
 				}
 			}
 		});
-		
+
 		// 5
 		new Vue({
 			//挂载元素
@@ -114,7 +134,7 @@
 				}
 			}
 		});
-		
+
 		// 6
 		new Vue({
 			el: "#app",
@@ -135,30 +155,65 @@
 				console.log('即将挂载');
 				console.log(this.$el);
 			},
-			mounted(){
+			mounted() {
 				console.log('挂载完毕');
 				console.log(this.$el);
 			},
-			beforeUpdate(){
+			beforeUpdate() {
 				console.log('=即将更新渲染=');
 				let name = this.$refs.app.innerHTML;
-				console.log('name:'+name);
+				console.log('name:' + name);
 			}
 		});
 
 		// 7 
 		new Vue({
-    el:"#app7",
-    data:{
-     name7:"<strong>前端君</strong>"
-    }
- });
- new Vue({
-    el:"#app8",
-    data:{
-     link:"http://hello.com"
-    }
- });
+			el: "#app7",
+			data: {
+				name7: "<strong>前端君</strong>"
+			}
+		});
+
+		// 8
+		new Vue({
+			el: "#app8",
+			data: {
+				link: "http://hello.com"
+			}
+		});
+
+		// 9
+		new Vue({
+			el: "#app9",
+			data: {
+				dis_true: true,
+				dis_false: false
+			}
+		});
+
+		// 10
+		new Vue({
+			el: "#app10",
+			data: {
+				num: 2
+			}
+		});
+
+		// 11
+		new Vue({
+			el: "#app11",
+			data: {
+				ok: true
+			}
+		});
+
+		// 12
+		new Vue({
+			el: "#app12",
+			data: {
+				host: 'hello.com'
+			}
+		});
 	</script>
 </body>
 
