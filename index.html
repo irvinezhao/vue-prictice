@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title> 简易安装 Vue.js</title>
+	<title>Vue.js</title>
 	<script src="vue.js"></script>
 </head>
 
@@ -34,6 +34,7 @@
 	</div>
 	
 	<div id="app" ref="app">{{name}}</div>
+	<div id="app7" v-html="name7"></div>
 	<script>
 		Vue.config.debug = true,
 		Vue.config.devtools = true,
@@ -140,6 +141,14 @@
 				console.log('name:'+name);
 			}
 		});
+
+		// 7 
+		new Vue({
+    el:"#app7",
+    data:{
+     name7:"<strong>前端君</strong>"
+    }
+ });
 	</script>
 </body>
 
