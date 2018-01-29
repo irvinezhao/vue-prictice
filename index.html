@@ -63,6 +63,11 @@
 	<div id="app13">
 		<button v-on:click="say('Tom')">点击</button>
 	</div>
+
+	<div id="app14">
+		<input v-model="msg" type="text">
+		<p>你输入：{{ msg }}</p>
+	</div>
 	<script>
 		Vue.config.debug = true,
 			Vue.config.devtools = true,
@@ -219,12 +224,21 @@
 			}
 		});
 
+		// 13
 		new Vue({
 			el: "#app13",
 			methods: {
 				say(name) {
-					console.log('hello'+name);
+					console.log('hello' + name);
 				}
+			}
+		});
+
+		// 14
+		new Vue({
+			el: "#app14",
+			data: {
+				msg: ''
 			}
 		});
 	</script>
