@@ -35,6 +35,10 @@
 	
 	<div id="app" ref="app">{{name}}</div>
 	<div id="app7" v-html="name7"></div>
+	<div id="app8">
+		<!--在href前用v-bind：修饰-->
+		<a v-bind:href="link">hello官网</a>
+	  </div>
 	<script>
 		Vue.config.debug = true,
 		Vue.config.devtools = true,
@@ -147,6 +151,12 @@
     el:"#app7",
     data:{
      name7:"<strong>前端君</strong>"
+    }
+ });
+ new Vue({
+    el:"#app8",
+    data:{
+     link:"http://hello.com"
     }
  });
 	</script>
