@@ -68,6 +68,11 @@
 		<input v-model="msg" type="text">
 		<p>你输入：{{ msg }}</p>
 	</div>
+
+	<div id="app15">
+		<input v-model="msg" type="text">
+		<p v-once>你输入：{{ msg }}</p>
+	</div>
 	<script>
 		Vue.config.debug = true,
 			Vue.config.devtools = true,
@@ -239,6 +244,14 @@
 			el: "#app14",
 			data: {
 				msg: ''
+			}
+		});
+
+		// 15
+		new Vue({
+			el: "#app15",
+			data: {
+				msg: 'hello,公众号的同学们'
 			}
 		});
 	</script>
