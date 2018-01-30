@@ -16,7 +16,7 @@ MVVM 可以拆分成：View --- ViewModel --- Model 三部分
 
 
 
-
+```
   let vm = new Vue({
     //挂载元素
   el:'#app',
@@ -26,7 +26,7 @@ MVVM 可以拆分成：View --- ViewModel --- Model 三部分
         age :  21
     }
   });
-
+```
 
 
 
