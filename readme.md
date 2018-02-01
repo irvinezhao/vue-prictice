@@ -7,9 +7,9 @@ MVVM 可以拆分成：View --- ViewModel --- Model 三部分
 
 视图 view 部分：
 
-
+```
   <div id="app"></div>
-
+```
 
 
 视图（html 部分）上我们有一个 id 为”app” 的 div 元素。
